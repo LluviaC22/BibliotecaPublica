@@ -2,7 +2,7 @@ import {Sequelize} from 'sequelize' //Importar sequelize
 import dotenv from 'dotenv' //Importar dotenv para variables de entorno
 
 
-/*const db = new Sequelize('biblioteca', 'root', 'cncoamerica', {
+/*const db = new Sequelize('biblioteca', '', '', {
     host: 'localhost',
     dialect: 'mysql'
 })*/
