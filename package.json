@@ -16,6 +16,8 @@
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
     "mysql2": "^3.11.3",
+    "nodemailer": "^6.9.16",
+    "pdfkit": "^0.15.1",
     "sequelize": "^6.37.3"
   }
 }

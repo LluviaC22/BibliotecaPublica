@@ -5,6 +5,7 @@ import { verifyRole } from '../middlewares/VerificarRol.js';
 import { obtenerHistorial } from '../controllers/HistorialController.js';
 import {getAllLibros, getLibro, createLibro, updateLibro, deleteLibro, buscarLibro, reservarLibro, prestarLibro} from '../controllers/LibroController.js'
 
+import { generarPdfReserva } from '../Pdfkit/GenerarPdf.js';
 const router = express.Router()//router 
 
 // Rutas públicas
@@ -24,5 +25,6 @@ router.delete('/:id_libro',verifyToken, verifyRole([1]), deleteLibro)
 router.post('/reservar', verifyToken, reservarLibro);
 router.post('/prestar', verifyToken, prestarLibro);
 
+router.post('/generar-pdf-reserva', verifyToken, generarPdfReserva);
 
 export default router;

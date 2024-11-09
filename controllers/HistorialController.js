@@ -29,7 +29,7 @@ export const obtenerHistorial = async (req, res) => {
             const libro = await LibroModel.findByPk(prestamo.id_libro, {
                 attributes: ['titulo', 'autor', 'categoria'] 
             });
-            return { ...prestamo.dataValues, libro }; 
+            return { ...prestamo.dataValues, libro }; //Devuelve todos los elementos y valores del array, titulo, autor etc
         }));
 
         // Obtener los detalles de los libros de las reservas

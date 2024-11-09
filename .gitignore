@@ -1,3 +1,4 @@
 # Ignorar archivos de configuración del entorno, para mantener segura la info sensible
 
 .env
+node_modules/

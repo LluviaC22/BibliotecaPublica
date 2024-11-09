@@ -95,25 +95,30 @@ export const buscarLibro = async (req, res) => {
     }
 };
 
-
 // PRESTAR LIBRO
 export const prestarLibro = async (req, res) => {
     try {
         const { id_libro, nombres, ap_paterno, ap_materno, domicilio, fecha_devolucion } = req.body; 
-        const id_usuario = req.id_usuario; // Id del usuario logueado
+        const id_usuario = req.id_usuario;
 
-        //Checar si el libro existe
+        // Comprobar si el usuario ya tiene una reserva o un préstamo
+        const reservaActiva = await ReservaModel.findOne({
+            where: { id_usuario, estado: 'activo' } 
+        });
+        const prestamoActivo = await PrestamoModel.findOne({
+            where: { id_usuario, devuelto: false } 
+        });
+
+        if (reservaActiva || prestamoActivo) {
+            return res.status(409).json({
+                message: 'No puedes pedir prestado un libro si ya tienes reservado o prestado uno'
+            });
+        }
+
+        // Verificar si el libro existe
         const libro = await LibroModel.findByPk(id_libro);
         if (!libro) {
             return res.status(404).json({ message: 'Libro no encontrado' });
-        }
-
-        // Verificar si el libro ya está prestado 
-        const existePrestamo = await PrestamoModel.findOne({
-            where: { id_libro, id_usuario }
-        });
-        if (existePrestamo) {
-            return res.status(400).json({ message: 'Ya tienes este libro prestado' });
         }
 
         // Crear un nuevo préstamo
@@ -125,8 +130,8 @@ export const prestarLibro = async (req, res) => {
             ap_materno,
             domicilio,
             fecha_prestamo: new Date(),
-            fecha_devolucion, 
-            devuelto: false //false o true
+            fecha_devolucion,
+            devuelto: false 
         });
 
         res.status(201).json({ message: 'Libro prestado exitosamente', prestamo: nuevoPrestamo });
@@ -136,36 +141,35 @@ export const prestarLibro = async (req, res) => {
     }
 };
   
-//RESERVAR LIBRO
-  export const reservarLibro = async (req, res) => {
+// RESERVAR LIBRO
+export const reservarLibro = async (req, res) => {
     try {
         const { id_libro, nombres, ap_paterno, ap_materno, estado } = req.body; 
-        const id_usuario = req.id_usuario; // Id del usuario logueado
-        
-        // Log para verificar el usuario que quiere reservar
-        console.log("ID del usuario:", id_usuario);
+        const id_usuario = req.id_usuario;
+
+        // Comprobar si el usuario ya tiene una reserva o un préstamo
+        const reservaActiva = await ReservaModel.findOne({
+            where: { id_usuario, estado: 'activo' }
+        });
+        const prestamoActivo = await PrestamoModel.findOne({
+            where: { id_usuario, devuelto: false }
+        });
+
+        if (reservaActiva || prestamoActivo) {
+            return res.status(409).json({
+                message: 'No puedes reservar un libro si ya tienes reservado o prestado uno'
+            });
+        }
 
         // Verificar si el libro existe
         const libro = await LibroModel.findByPk(id_libro);
-        console.log("Libro encontrado:", libro);
-
         if (!libro) {
             return res.status(404).json({ message: 'Libro no encontrado' });
         }
 
-        // Checarsi el libro está disponible
+        // Verificar si el libro está disponible
         if (!libro.disponible) {
             return res.status(400).json({ message: 'El libro no está disponible para la reserva' });
-        }
-        //Revisar si el usuario ya hechp una reserva
-        const existeReserva = await ReservaModel.findOne({
-            where: { id_libro, id_usuario }
-        });
-
-        console.log("La reserva ya existe:", existeReserva);
-
-        if (existeReserva) {
-            return res.status(400).json({ message: 'Ya has reservado este libro' });
         }
 
         // Crear una nueva reserva
@@ -176,7 +180,7 @@ export const prestarLibro = async (req, res) => {
             ap_paterno,
             ap_materno,
             fecha_reserva: new Date(),
-            estado 
+            estado: estado || 'activo' // Configuración por defecto si no se especifica
         });
 
         res.status(201).json({ message: 'Libro reservado exitosamente', reserva: nuevaReserva });

@@ -62,8 +62,6 @@ export const register = async (req, res) => {
     res.status(500).json({ message: 'Error del servidor' });
   }
 }
-
-
 //CRUD USUARIOS
 
 // Obtener todos los usuarios
@@ -125,3 +123,39 @@ export const deleteUser = async (req, res) => {
     res.status(500).json({ message: 'Error del servidor' });
   }
 }
+
+//ACTUALIZAR PERFIL
+export const ActualizarPerfil = async (req, res) => {
+  try {
+    const { nombre, email } = req.body;
+    const id_usuario = req.id_usuario; 
+
+    const usuario = await UsuarioModel.findByPk(id_usuario);
+    if (!usuario) {
+      return res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+
+    // Verificar si el nuevo email ya está en uso
+    if (email !== usuario.email) {
+      const existingUser = await UsuarioModel.findOne({ where: { email } });
+      if (existingUser) {
+        return res.status(400).json({ message: 'El correo electrónico ya está en uso' });
+      }
+    }
+
+    // Actualizar el perfil
+    await usuario.update({ nombre, email });
+
+    res.json({ 
+      message: 'Perfil actualizado exitosamente',
+      usuario: {
+        id_usuario: usuario.id_usuario,
+        nombre: usuario.nombre,
+        email: usuario.email
+      }
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Error del servidor' });
+  }
+};

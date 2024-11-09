@@ -25,7 +25,7 @@ const ReservaModel = db.define('reservas', {
         type: DataTypes.DATE
     },
     estado: {
-        type: DataTypes.ENUM('reservado', 'cancelado', 'caducado', 'completado'),
+        type: DataTypes.ENUM('activo', 'completo', 'cancelado'),
         allowNull: false 
     },
     id_usuario: {

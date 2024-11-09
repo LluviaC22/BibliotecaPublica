@@ -1,6 +1,5 @@
 import express from "express"
 import cors from "cors"
-
 import dotenv from 'dotenv';
 
 //Importar conexión a la BD
@@ -19,6 +18,8 @@ app.use(express.json())
 app.use('/libros', libroRoutes)
 
 app.use('/usuarios', usuarioRoutes)
+
+
 
 
 try
