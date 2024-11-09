@@ -14,15 +14,14 @@ export const RestablecerContrasena = async (req, res) => {
       return res.status(404).json({ message: 'Usuario no encontrado' });
     }
 
-    // Generar token de restablecimiento con expiración de 1 hora
     const token = jwt.sign({ id_usuario: usuario.id_usuario }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
-    // Configuración de transporte SMTP de Gmail
+    // Configuración de SMTP de Gmail
     const transporter = nodemailer.createTransport({
-      service: 'smtp@gmail',  // Usamos el servicio de Gmail
+      service: 'smtp@gmail',  
       auth: {
-        user: process.env.GMAIL_USER,  // Tu dirección de Gmail
-        pass: process.env.GMAIL_PASS   // Tu contraseña de Gmail (o la contraseña de aplicación si usas 2FA)
+        user: process.env.GMAIL_USER, 
+        pass: process.env.GMAIL_PASS  
       }
     });
 
@@ -52,7 +51,7 @@ export const VerificarTokenYRestablecerContrasena = (req, res) => {
       if (err) {
         return res.status(401).json({ message: 'Token no válido o expirado' });
       }
-      req.id_usuario = decoded.id_usuario; // Te da el id_usuario
+      req.id_usuario = decoded.id_usuario; 
       res.json({ message: 'Token válido, puedes proceder con el cambio de contraseña' });
     });
   } catch (error) {
@@ -71,7 +70,7 @@ export const ActualizarContrasena = async (req, res) => {
       if (err) {
         return res.status(401).json({ message: 'Token no válido o expirado' });
       }
-      const { id_usuario } = decoded; // Obtener el ID del usuario del token
+      const { id_usuario } = decoded; 
 
       // Buscar el usuario en la base de datos
       const usuario = await UsuarioModel.findByPk(id_usuario);
