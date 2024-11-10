@@ -1,0 +1,56 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  margin: 0;
+  padding: 0; 
+}
+
+.navbar {
+  margin-top: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  border: none;
+}
+
+.navbar .container-fluid {
+  margin: 0;
+  padding: 0;
+}
+
+/* Texto de bienvenida */
+.welcome-text {
+  width: 100%;
+  font-family: 'Georgia', serif;
+  font-size: 1rem;
+  color: #333;
+  text-align: left;
+  padding: 20px;
+  margin-top: 0; 
+}
+
+/* Contenedor del welcome-text */
+.welcome-container {
+  width: 100%;
+  padding: 20px;
+  background-color: #f5f5f5;
+  margin-top: 20px; /* Separación del slider */
+}
+
+.slider-container {
+  margin-bottom: 20px; /* Espacio debajo del slider */
+}
+
+/* Estilos para el título de Sala Infantil */
+h2 {
+  text-align: center; 
+  margin: 20px 0; 
+  font-family: 'Georgia', serif; 
+  color: #333; 
+  font-size: 2.5rem; 
+  font-weight: bold; /* Hace el texto en negritas */
+}

@@ -1,0 +1,118 @@
+body, html {
+  margin: 0; 
+  padding: 0;
+  overflow-x: hidden; 
+  width: 100%; 
+  height: 100%; 
+}
+
+/* Navbar principal */
+.custom-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #D8B38F; 
+  padding: 10px 20px; 
+  border-bottom: 2px solid black;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+  width: 100%; 
+  margin: 0; 
+}
+
+/* Contenedor sin padding extra */
+.custom-navbar .container-fluid {
+  padding: 0;
+  margin: 0; 
+  width: 100%; 
+}
+
+/* Logo circular */
+.profile-logo {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%; 
+  object-fit: cover; 
+}
+
+/* Título del navbar, con enfoque en "Mario Hugo Marino Ortiz" */
+.navbar-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Playfair Display', serif;
+  color: white;
+  font-size: 1.8rem; 
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilo destacado para "Mario Hugo Marino Ortiz" */
+.navbar-title strong {
+  font-size: 2.1rem; /* Tamaño aún mayor para resaltar */
+  font-weight: 900;  /* Negrita */
+  color: #f7e8d1; 
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3); 
+  letter-spacing: 1.2px; 
+}
+
+/* Texto del perfil */
+.profile-text {
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.profile-icon {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%; 
+  border: 2px solid white;
+  transition: transform 0.3s;
+}
+
+.profile-icon:hover {
+  transform: scale(1.1);
+}
+
+/* Responsividad para pantallas pequeñas */
+@media (max-width: 768px) {
+  .navbar-title {
+    font-size: 1.5rem;
+  }
+
+  .navbar-title strong {
+    font-size: 1.8rem;
+  }
+
+  .profile-logo {
+    width: 30px;
+    height: 30px;
+  }
+
+  .profile-text {
+    font-size: 0.9rem;
+  }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 576px) {
+  .navbar-title {
+    font-size: 1.3rem;
+  }
+  
+  .navbar-title strong {
+    font-size: 1.6rem;
+  }
+
+  .profile-icon {
+    display: none;
+  }
+
+  .profile-logo {
+    width: 25px;
+    height: 25px;
+  }
+}

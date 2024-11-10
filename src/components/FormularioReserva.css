@@ -1,0 +1,45 @@
+.formulario-reserva {
+    max-width: 400px; /*  ancho del formulario */
+    margin: 0 auto; /* Centra el formulario horizontalmente */
+    background-color: #f4f4f4; 
+    padding: 20px; 
+    border-radius: 5px; /* Bordes */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Sombra del formulario */
+  }
+  
+  h2 {
+    text-align: center; /* Centrado de el texto del encabezado */
+    color: #333; /* Color del texto */
+  }
+  
+  .form-group {
+    margin-bottom: 15px; /* Espacio entre grupos de campos */
+  }
+  
+  label {
+    display: block; 
+    margin-bottom: 5px; /* Espacio inferior del label */
+    color: #555; 
+  }
+  
+  input[type="text"],
+  input[type="date"],
+  input[type="time"],
+  button {
+    width: 100%;
+    padding: 10px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px; 
+  }
+  
+  button {
+    background-color: #D8B38F; 
+    color: white; 
+    border: none; 
+    cursor: pointer; /* Cursor de puntero al pasar por encima */
+  }
+  
+  button:hover {
+    background-color: #b57c5f; 
+  }
+  

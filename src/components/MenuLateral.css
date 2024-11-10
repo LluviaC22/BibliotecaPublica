@@ -1,0 +1,31 @@
+/* MenuLateral.css */
+.menu-lateral {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 250px;
+    height: 100%;
+    background-color: #343a40; 
+    color: #ffffff; /* Color del texto */
+    box-shadow: -2px 0 5px rgba(0,0,0,0.5);
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+  }
+  
+  .menu-lateral.open {
+    transform: translateX(0);
+  }
+  
+  /* Ajuste de estilo para los enlaces */
+  .menu-lateral a {
+    display: block;
+    padding: 10px 20px;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .menu-lateral a:hover {
+    background-color: #495057; /* Color de hover oscuro */
+  }
+  

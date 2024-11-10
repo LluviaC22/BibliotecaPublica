@@ -1,0 +1,114 @@
+
+.configuracion-perfil-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px;
+    background-color: #ffffff; 
+    color: #333333; /* Texto  */
+    min-height: 100vh;
+  }
+  
+  /* Título */
+  h2 {
+    color: #000000; 
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-size: 2rem;
+  }
+  
+  /* Tarjeta de perfil */
+  .perfil-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    max-width: 500px;
+    width: 100%;
+    border: 1px solid #e0e0e0;
+  }
+  
+  /* Información del perfil */
+  .perfil-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Foto de perfil */
+  .perfil-foto {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    border: 2px solid #D8B38F; 
+  }
+  
+  /* Botón de editar foto */
+  .btn-editar {
+    background-color: #D8B38F;
+    color: #ffffff;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-editar:hover {
+    background-color: #c9a27e; 
+  }
+  
+  /* Formulario */
+  .perfil-formulario {
+    width: 100%;
+  }
+  
+  /* Campos del formulario */
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 5px;
+    color: #333333; 
+    font-weight: bold;
+  }
+  
+  input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    background-color: #ffffff;
+    color: #333333;
+    font-size: 1rem;
+  }
+  
+  input::placeholder {
+    color: #999999;
+  }
+  
+  /* Botón de guardar cambios */
+  .btn-guardar {
+    width: 100%;
+    padding: 10px;
+    background-color: #D8B38F;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .btn-guardar:hover {
+    background-color: #c9a27e; 
+  }
+  
